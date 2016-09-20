@@ -22,7 +22,7 @@ export default class CategoryComponent extends React.Component {
     CategoryStore.addChangeListener(this.changeListener);
 
     // Call an action
-    CategoryAction.getCategories([{"id": 1, "name": "phone"}]);
+    CategoryAction.getCategories();
   }
 
   componentWillUnmount() {
@@ -39,7 +39,7 @@ export default class CategoryComponent extends React.Component {
     console.log(this.state.categories);
     return(
       <div>
-        Hello
+        Song Managements
       </div>
     );
   }

@@ -8,7 +8,7 @@ gulp.task('build', function () {
       .transform('babelify', {presets: ['es2015', 'react']})
       .bundle()
       .pipe(source('app.js'))
-      .pipe(gulp.dest('public'));
+      .pipe(gulp.dest('server/public'));
 });
 
 gulp.task('watch', ['build'], function () {
