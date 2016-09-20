@@ -17,13 +17,14 @@ class CategoryStore extends BaseStore {
   _registerToActions(action) {
     switch(action.actionType) {
       case CategoryConstant.ACTION_LIST_CATEGORIES:
-        alert("alert store");
         this._categories = action.data;
+
+        // Trigger an event
         this.emitChange();
         break;
       default:
         break;
-    };
+    }
   }
 
 }

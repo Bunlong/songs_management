@@ -1,4 +1,4 @@
-import {EventEmitter} from 'events';
+import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatchers/AppDispatcher';
 
 export default class BaseStore extends EventEmitter {
@@ -20,12 +20,13 @@ export default class BaseStore extends EventEmitter {
   }
 
   addChangeListener(cb) {
-    this.on('CHANGE', cb)
+    this.on('CHANGE', cb);
   }
 
   removeChangeListener(cb) {
-    if(cb !== undefined) {
+    if(cb!==undefined) {
       this.removeListener('CHANGE', cb);
     }
   }
+  
 }

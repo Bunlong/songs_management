@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
-import CategoryAction from '../actions/CategoryAction';
 import CategoryStore from '../stores/CategoryStore';
+import CategoryAction from '../actions/CategoryAction';
 
 export default class CategoryComponent extends React.Component {
 
@@ -17,33 +17,29 @@ export default class CategoryComponent extends React.Component {
   }
 
   componentWillMount() {
-    CategoryAction.getCategories({"id": 1, "name": "phone"});
+    // Define an event
     this.changeListener = this._onChange.bind(this);
-  }
-
-  componentDidMount() {
     CategoryStore.addChangeListener(this.changeListener);
+
+    // Call an action
+    CategoryAction.getCategories([{"id": 1, "name": "phone"}]);
   }
 
   componentWillUnmount() {
     CategoryStore.removeChangeListener(this.changeListener);
   }
 
-  _onChange(e){
+  _onChange(e) {
     this.setState({
       categories: CategoryStore.categories
     });
   }
 
-  save() {
-    console.log(CategoryStore.categories);
-    CategoryAction.saveCategory("data");
-  }
-
   render() {
+    console.log(this.state.categories);
     return(
       <div>
-        <Button onClick={this.save.bind(this)}>Save</Button>
+        Hello
       </div>
     );
   }
