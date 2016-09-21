@@ -1,15 +1,18 @@
 import AppDispatcher from '../../common/dispatchers/AppDispatcher.js';
 import CategoryConstant from '../constants/CategoryConstant';
+import CategoryService from  '../services/CategoryService';
 
 export default {
 
   getCategories: () => {
-    let data = [{"id": 1, "name": "Pop"}, {"id": 2, "name": "J-Pop"}, {"id": 3, "name": "K-Pop"}];
-
-    AppDispatcher.dispatch({
-      actionType: CategoryConstant.ACTION_LIST_CATEGORIES,
-      data: data
-    });
+    return  CategoryService.getCategories(function(response) {
+              if(response.status == 200) {
+                AppDispatcher.dispatch({
+                  actionType: CategoryConstant.ACTION_LIST_CATEGORIES,
+                  data: response.data
+                });
+              }
+            });
   },
-  
+
 }
