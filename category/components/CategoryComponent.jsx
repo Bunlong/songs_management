@@ -17,12 +17,12 @@ export default class CategoryComponent extends React.Component {
   }
 
   componentWillMount() {
+    // Call an action
+    CategoryAction.getCategories();
+    
     // Define an event
     this.changeListener = this._onChange.bind(this);
     CategoryStore.addChangeListener(this.changeListener);
-
-    // Call an action
-    CategoryAction.getCategories();
   }
 
   componentWillUnmount() {
@@ -35,11 +35,14 @@ export default class CategoryComponent extends React.Component {
     });
   }
 
+  save() {
+    console.log(CategoryStore.categories);
+  }
+
   render() {
-    console.log(this.state.categories);
     return(
       <div>
-        Song Managements
+        <Button onClick={this.save.bind(this)}>Save</Button>
       </div>
     );
   }
