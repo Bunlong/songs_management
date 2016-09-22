@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Button, Modal, Tabs, Tab, Row, Col, FormControl} from 'react-bootstrap';
+import {FormControl} from 'react-bootstrap';
 
 export default class CategoryFormItem extends React.Component{
 
