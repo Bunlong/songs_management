@@ -1,22 +1,22 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
+import {NavItem} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
 export default class Home extends React.Component {
-
   render() {
     return(
       <div>
         <div>
           <LinkContainer to={{pathname: '/categories'}}>
-            <a type="button">
+            <NavItem to="categories" href='#'>
               Category
-            </a>
+            </NavItem>
           </LinkContainer>
           <LinkContainer to={{pathname: '/artists'}}>
-            <a type="button">
+            <NavItem to="artists" href='#'>
               Artist
-            </a>
+            </NavItem>
           </LinkContainer>
         </div>
         <div>
@@ -25,5 +25,4 @@ export default class Home extends React.Component {
       </div>
     );
   }
-
 };
