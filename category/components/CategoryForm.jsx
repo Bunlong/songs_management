@@ -4,7 +4,7 @@ import CategoryStore from '../stores/CategoryStore';
 import CategoryAction from '../actions/CategoryAction';
 import CategoryFormItem from './CategoryFormItem';
 import CategoryModel from '../models/CategoryModel';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 export default class CategoryForm extends React.Component {
   constructor(){
