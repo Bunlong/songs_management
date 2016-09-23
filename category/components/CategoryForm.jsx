@@ -3,6 +3,7 @@ import {Button} from 'react-bootstrap';
 import CategoryStore from '../stores/CategoryStore';
 import CategoryAction from '../actions/CategoryAction';
 import CategoryFormItem from './CategoryFormItem';
+import CategoryFormModal from './CategoryFormModal';
 import CategoryModel from '../models/CategoryModel';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
@@ -14,8 +15,9 @@ export default class CategoryForm extends React.Component {
 
   _getInitialState() {
     return ({
-      categories: CategoryStore.categories,
-      category: {}
+      showModal: false,
+      currentCategory: {},
+      categories: CategoryStore.categories
     });
   }
 
@@ -38,22 +40,21 @@ export default class CategoryForm extends React.Component {
     });
   }
 
-  _findItem() {
-    return new CategoryModel("");
-  }
-
-  requestChange(category) {
-    this.setState({
-      category: category
-    });
-  }
-
-  save() {
-    CategoryAction.save(this.state.category);
-  }
-
   onRowSelect(row, isSelected, event) {
     CategoryAction.selectCategory(row.id);
+  }
+
+  open() {
+    this.setState({showModal: true});
+  }
+
+  close() {
+    this.setState({showModal: false});
+  }
+
+  newCategory() {
+    this.state.currentCategory = new CategoryModel("");
+    this.open();
   }
 
   render() {
@@ -76,8 +77,8 @@ export default class CategoryForm extends React.Component {
             </TableHeaderColumn>
         </BootstrapTable>
 
-        <CategoryFormItem item={this._findItem()} requestChange={this.requestChange.bind(this)} />
-        <Button onClick={this.save.bind(this)}>Save</Button>
+        <Button onClick={this.newCategory.bind(this)}>Add new category</Button>
+        <CategoryFormModal showModal={this.state.showModal} close={this.close.bind(this)} category={this.state.currentCategory} />
       </div>
     );
   }

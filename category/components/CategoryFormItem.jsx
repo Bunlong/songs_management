@@ -10,13 +10,13 @@ export default class CategoryFormItem extends React.Component{
 
   _getInitialState(props) {
     return {
-      item: props.item
+      category: props.category
     };
   }
 
   changeName(e) {
-    this.props.item.name = e.target.value;
-    this.props.requestChange(this.props.item);
+    this.props.category.name = e.target.value;
+    this.props.requestChange(this.props.category);
   }
 
   render() {
