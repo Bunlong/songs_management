@@ -26,6 +26,7 @@
     "lodash": "^4.15.0",
     "react": "^15.3.1",
     "react-bootstrap": "^0.30.3",
+    "react-bootstrap-table": "^2.5.3",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.1",
     "react-router": "^2.7.0",

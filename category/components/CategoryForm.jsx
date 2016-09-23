@@ -4,6 +4,7 @@ import CategoryStore from '../stores/CategoryStore';
 import CategoryAction from '../actions/CategoryAction';
 import CategoryFormItem from './CategoryFormItem';
 import CategoryModel from '../models/CategoryModel';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 export default class CategoryForm extends React.Component {
   constructor(){
@@ -48,12 +49,33 @@ export default class CategoryForm extends React.Component {
   }
 
   save() {
-    console.log(this.state.category);
+    CategoryAction.save(this.state.category);
+  }
+
+  onRowSelect(row, isSelected, event) {
+    CategoryAction.selectCategory(row.id);
   }
 
   render() {
+    var selectRowProp = {
+      mode: "radio",
+      clickToSelect: true,
+      bgColor: "rgb(100, 196, 53)",
+      onSelect: this.onRowSelect.bind(this),
+      hideSelectColumn : true
+    };
+
     return(
       <div>
+        <BootstrapTable data={this.state.categories} striped={true} hover={true} selectRow={selectRowProp}>
+            <TableHeaderColumn dataField="id" isKey={true}>
+              No
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="name">
+              Name
+            </TableHeaderColumn>
+        </BootstrapTable>
+
         <CategoryFormItem item={this._findItem()} requestChange={this.requestChange.bind(this)} />
         <Button onClick={this.save.bind(this)}>Save</Button>
       </div>

@@ -18,6 +18,23 @@ class CategoryService {
       success(response);
     });
   }
+
+  save(data, success) {
+    return when(request({
+      url: CategoryConstant.SAVE_CATEGORY_URL,
+      method: 'POST',
+      crossOrigin: true,
+      type: 'json',
+      headers: {
+        'X-CSRFToken': cookie.load('csrftoken'),
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify(data)
+      // data: JSON.stringify(temp)
+    })).then(function(response) {
+      success(response);
+    });
+  }
   
 }
 

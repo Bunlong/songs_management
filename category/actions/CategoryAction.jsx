@@ -15,4 +15,22 @@ export default {
             });
   },
 
+  save: (data) => {
+    return  CategoryService.save(data, function(response) {
+              if(response.status == 200) {
+                AppDispatcher.dispatch({
+                  actionType: CategoryConstant.ACTION_SAVE_CATEGORY,
+                  data: response.data
+                });
+              }
+            });
+  },
+
+  selectCategory:(data) => {
+    AppDispatcher.dispatch({
+      actionType: CategoryConstant.ACTION_SELECT_CATEGORY,
+      data: data
+    });
+  },
+
 }
