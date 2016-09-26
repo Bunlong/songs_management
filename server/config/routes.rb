@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :categories do 
+    resources :categories, except: [:update, :destroy] do 
       collection do
         get 'categories'
+      end
+    end
+
+    put 'categories' => 'categories#update'
+    delete 'categories' => 'categories#destroy'
+
+    resources :artists, except: [:update, :destroy] do 
+      collection do
+        get 'artists'
       end
     end
   end

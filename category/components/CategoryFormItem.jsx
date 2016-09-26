@@ -22,7 +22,7 @@ export default class CategoryFormItem extends React.Component{
   render() {
     return(
       <div>
-        <FormControl onChange={this.changeName.bind(this)} type="text" />
+        <FormControl type="text" defaultValue={this.state.category.name} onChange={this.changeName.bind(this)} />
       </div>
     );
   }

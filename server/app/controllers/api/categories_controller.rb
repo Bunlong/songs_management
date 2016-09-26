@@ -6,7 +6,7 @@ class Api::CategoriesController < ApplicationController
       @categories = Category.all.select('id, name')
       render json: { status: 200, data: @categories }
     rescue Exception => e
-      render json: { status: 503 }
+      render json: { status: 504 }
     end
   end
 
@@ -16,38 +16,34 @@ class Api::CategoriesController < ApplicationController
       if @category.save
         render json: { status: 200, data: @category }
       else
-        render json: { status: 503 }
+        render json: { status: 504}
       end
     rescue Exception => e
-      render json: { status: 503 }
+      render json: { status: 504 }
     end
   end
 
   def update
     begin
-      @category = Category.find(params[:id])
-
       if @category.update(category_params)
-        render json: { status: 200 }
+        render json: { status: 200, data: @category }
       else
-        render json: { status: 503 }
+        render json: { status: 504 }
       end
     rescue Exception => e
-      render json: { status: 503 }
+      render json: { status: 504 }
     end
   end
 
   def destroy
     begin
-      @category = Category.find(params[:id])
-
       if @category.destroy
-        render json: { status: 200 }
+        render json: { status: 200, data: @category }
       else
-        render json: { status: 503 }
+        render json: { status: 504 }
       end
     rescue Exception => e
-      render json: { status: 503 }
+      render json: { status: 504 }
     end
   end
 
@@ -57,7 +53,7 @@ class Api::CategoriesController < ApplicationController
   end
 
   def category_params
-      params.require(:category).permit(:name)
+    params.require(:category).permit(:name)
   end
 
 end

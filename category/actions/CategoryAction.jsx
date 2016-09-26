@@ -26,11 +26,22 @@ export default {
             });
   },
 
-  selectCategory:(data) => {
+  selectCategory: (data) => {
     AppDispatcher.dispatch({
       actionType: CategoryConstant.ACTION_SELECT_CATEGORY,
       data: data
     });
   },
+
+  delete: (data) => {
+    return  CategoryService.delete(data, function(response) {
+              if(response.status == 200) {
+                AppDispatcher.dispatch({
+                  actionType: CategoryConstant.ACTION_DELETE_CATEGORY,
+                  data: response.data
+                });
+              }
+            });
+  }
 
 }

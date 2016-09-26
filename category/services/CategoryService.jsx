@@ -20,9 +20,13 @@ class CategoryService {
   }
 
   save(data, success) {
+    var method = 'PUT';
+    
+    if(data.id == null) { method = 'POST'; }
+
     return when(request({
       url: CategoryConstant.SAVE_CATEGORY_URL,
-      method: 'POST',
+      method: method,
       crossOrigin: true,
       type: 'json',
       headers: {
@@ -30,12 +34,26 @@ class CategoryService {
         'Content-Type': 'application/json'
       },
       data: JSON.stringify(data)
-      // data: JSON.stringify(temp)
     })).then(function(response) {
       success(response);
     });
   }
-  
+
+  delete(data, success) {
+    return when(request({
+      url: CategoryConstant.SAVE_CATEGORY_URL,
+      method: 'DELETE',
+      crossOrigin: true,
+      type: 'json',
+      headers: {
+        'X-CSRFToken': cookie.load('csrftoken'),
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify(data)
+    })).then(function(response) {
+      success(response);
+    });
+  }  
 }
 
 export default new CategoryService()

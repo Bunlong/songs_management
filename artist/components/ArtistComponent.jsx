@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
+import ArtistForm from './ArtistForm';
 
 export default class ArtistComponent extends React.Component {
 
@@ -10,7 +11,7 @@ export default class ArtistComponent extends React.Component {
   render() {
     return(
       <div>
-        Artist
+        <ArtistForm />
       </div>
     );
   }

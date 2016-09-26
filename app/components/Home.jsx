@@ -1,25 +1,26 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
-import {NavItem} from 'react-bootstrap';
+import {Navbar, Button, Nav, NavItem} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
 export default class Home extends React.Component {
   render() {
     return(
       <div>
-        <div>
-          <LinkContainer to={{pathname: '/categories'}}>
-            <NavItem to="categories" href='#'>
-              Category
-            </NavItem>
-          </LinkContainer>
-          <LinkContainer to={{pathname: '/artists'}}>
-            <NavItem to="artists" href='#'>
-              Artist
-            </NavItem>
-          </LinkContainer>
-        </div>
-        <div>
+        <Navbar>
+          <Nav className="nav navbar-nav">
+            <LinkContainer to={{pathname: '/categories'}}>
+              <NavItem to="categories" href='#'>
+                Category
+              </NavItem>
+            </LinkContainer>
+            <LinkContainer to={{pathname: '/artists'}}>
+              <NavItem to="artists" href='#'>
+                Artist
+              </NavItem>
+            </LinkContainer>
+          </Nav>
+        </Navbar>
+        <div className="container">
           {this.props.children}
         </div>
       </div>
