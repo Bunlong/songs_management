@@ -7,11 +7,11 @@ class ArtistStore extends BaseStore {
   constructor() {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
-    this._artist = new Array();
+    this._artists = new Array();
   }
 
-  get _artists() {
-    return this._artist;
+  get artists() {
+    return this._artists;
   }
 
   _registerToActions(action) {
